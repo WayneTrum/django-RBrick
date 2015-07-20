@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^home/','RBuser.views.home'),
     url(r'^login/','RBuser.views.login'),
     url(r'^register/','RBuser.views.register'),
+    url(r'^loginout/','RBuser.views.loginout'),
 
     # discuss part
 

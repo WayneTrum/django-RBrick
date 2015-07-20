@@ -39,3 +39,7 @@ def register(request):
     user.is_staff = True
     user.save()
     return redirect('/home')
+
+def loginout(request):
+  auth.logout(request)
+  return redirect('/home')
