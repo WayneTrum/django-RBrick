@@ -35,10 +35,14 @@ def register(request):
     username = request.POST.get('username','')
     email = request.POST.get('email','')
     password = request.POST.get('password','')
-    user = User.objects.create_user(username,email,password)
-    user.is_staff = True
-    user.save()
-    return redirect('/home')
+    userfind = User.objects.filter(Q(username=username) | Q(email=username))
+    if userfind is None:
+      user = User.objects.create_user(username,email,password)
+      user.is_staff = True
+      user.save()
+      return redirect('/home')
+    else:
+      return redirect('/register')
 
 def loginout(request):
   auth.logout(request)
